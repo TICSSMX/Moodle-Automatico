@@ -1,0 +1,15 @@
+[all:children]
+vms
+esxis
+vcenters
+
+[vms]
+moodleapp
+moodledb
+
+[esxis]
+esxi01
+esxi02
+
+[vcenters]
+vcenter
