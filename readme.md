@@ -7,6 +7,12 @@ Este proyecto hace uso de tecnologias como:
 - Oracle Linux R9
 - Ansible
 
-### Requicitos
-
+### Requisitos
+- Un cluster de VMware vSphere [vCenter + ESXis]
+    - Usuario + contraseña [acceso via ssh]
+    - IP vCenter
+- Un Ansible control
+    - Inventario de Infraestructura
+    - Codigo de proyecto DEV-MOODLE
+- Una cerveza fria
 ### Modo de uso
