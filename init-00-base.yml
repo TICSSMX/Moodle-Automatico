@@ -1,0 +1,10 @@
+---
+- name: playbook para inicializacion de sistemas
+  hosts: all
+  remote_user: root
+  become: true
+  roles:
+    - bmv.system.users_and_groups
+    - bmv.system.authorized_keys
+    - bmv.system.sudoers
+    - bmv.system.firewalld
