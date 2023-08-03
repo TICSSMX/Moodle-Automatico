@@ -1,5 +1,8 @@
 [all:children]
 vms
+vmwares
+
+[vmwares:children]
 esxis
 vcenters
 
