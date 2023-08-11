@@ -7,6 +7,8 @@ Este proyecto hace uso de tecnologias como:
 - Oracle Linux R9
 - Ansible
 
+![](https://github.com/TICSSMX/Moodle-Automatico/blob/chetumal/Auto_moodle_topologia_de_red.jpg)
+
 ### Requisitos
 - Un cluster de VMware vSphere [vCenter + ESXis]
     - Usuario + contraseña [acceso via gui]
@@ -23,4 +25,16 @@ Se realizaran llamadas a 5 playbooks, en el siguiente orden:
 - configura_apps.yml
 - instala_moodle.yml
 - prueba_moodle.yml
+
 ![](https://github.com/TICSSMX/Moodle-Automatico/blob/chetumal/Auto_moodle_proceso.jpg)
+
+### Variables para Playbooks
+Las variables requeridas para la correcta ejecucion de los Playbooks, son:
+- vCenter
+   - user
+   - password
+   - URL
+- VMs
+   - IP
+   - hostname
+   - domain
