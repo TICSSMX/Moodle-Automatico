@@ -1,0 +1,81 @@
+---
+- name: Creando dos VMs para Moodle
+  hosts: localhost
+  become: false
+  gather_facts: false
+  collections:
+    - community.vmware
+  pre_tasks:
+    - include_vars: vars.yml
+  tasks:
+#    - name: Creando un folder en la instalación para las VMs de Moodle
+#      vcenter_folder:
+#        hostname: "{{ vcenter_hostname }}"
+#        username: "{{ vcenter_username }}"
+#        password: "{{ vcenter_password }}"
+#        validate_certs: "{{ vcenter_validate_certs }}"
+#        datacenter_name: "{{ vcenter_datacenter }}"
+#        folder_name: "{{ vcenter_destination_folder }}"
+#        folder_type: vm
+#        state: present
+    - name: Clondando VM para MoodleApp
+      vmware_guest:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        validate_certs: "{{ vcenter_validate_certs }}"
+        datacenter: "{{ vcenter_datacenter }}"
+        cluster: "{{ vcenter_cluster }}"
+        name: "{{ vm_moo_app_name }}"
+        folder: "{{ vcenter_destination_folder }}"
+        template: "{{ vm_template }}"
+        hardware:
+          memory_mb: 2048
+          num_cpus: 4
+          scsi: paravirtual
+        disk: 
+        - size_gb: 15
+          type: "{{ vm_disk_type }}"
+          datastore: "{{ vm_disk_datastore }}"
+        - size_gb: 5
+          type: "{{ vm_disk_type }}"
+          datastore: "{{ vm_disk_datastore }}"
+        networks:
+        - name: "{{ vm_net_name }}"
+          connected: true
+          type: dhcp
+        state: "{{ vm_state }}"
+#          ip: "{{ vm_moo_app_net_ip }}"
+#          netmask: "{{ vm_net_mask }}"
+     
+    - name: Clondando VM para MoodleDB
+      vmware_guest:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        validate_certs: "{{ vcenter_validate_certs }}"
+        datacenter: "{{ vcenter_datacenter }}"
+        cluster: "{{ vcenter_cluster }}"
+        name: "{{ vm_moo_db_name }}"
+        folder: "{{ vcenter_destination_folder }}"
+        template: "{{ vm_template }}"
+        hardware:
+          memory_mb: 512
+          num_cpus: 2
+          scsi: paravirtual
+        disk: 
+        - size_gb: 10
+          type: "{{ vm_disk_type }}"
+          datastore: "{{ vm_disk_datastore }}"
+        - size_gb: 5
+          type: "{{ vm_disk_type }}"
+          datastore: "{{ vm_disk_datastore }}"
+        networks:
+        - name: "{{ vm_net_name }}"
+          connected: true
+          type: dhcp
+        state: "{{ vm_state }}"
+        
+#          ip: "{{ vm_moo_db_net_ip }}"
+#          netmask: "{{ vm_net_mask }}"
+#        wait_for_ip_address: true

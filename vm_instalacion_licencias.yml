@@ -1,0 +1,39 @@
+---
+- name: Instalacion de claves de producto
+  hosts: localhost
+  become: false
+  gather_facts: false
+  collections:
+    - community.vmware
+  pre_tasks:
+    - include_vars: vars.yml
+  tasks:
+    - name: Add a new vCenter license
+      community.vmware.vcenter_license:
+        hostname: '{{ vcenter_hostname }}'
+        username: '{{ vcenter_username }}'
+        password: '{{ vcenter_password }}'
+        validate_certs: "{{ vcenter_validate_certs }}"
+        license: HZ2W8-D9J0H-48198-K03Q6-APRLA
+        state: present
+      delegate_to: localhost
+    - name: Add ESXi license and assign to the ESXi 01 host
+      community.vmware.vcenter_license:
+        hostname: '{{ vcenter_hostname }}'
+        username: '{{ vcenter_username }}'
+        password: '{{ vcenter_password }}'
+        validate_certs: "{{ vcenter_validate_certs }}"
+        esxi_hostname: '{{ esxi_01_hostname }}'
+        license: JH09A-2YL84-M7EC8-FL0K2-3N2J2
+        state: present
+      delegate_to: localhost
+    - name: Add ESXi license and assign to the ESXi 02 host
+      community.vmware.vcenter_license:
+        hostname: '{{ vcenter_hostname }}'
+        username: '{{ vcenter_username }}'
+        password: '{{ vcenter_password }}'
+        validate_certs: "{{ vcenter_validate_certs }}"
+        esxi_hostname: '{{ esxi_02_hostname }}'
+        license: JH09A-2YL84-M7EC8-FL0K2-3N2J2
+        state: present
+      delegate_to: localhost

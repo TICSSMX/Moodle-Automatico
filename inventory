@@ -1,0 +1,14 @@
+[local]
+localhost   ansible_connection=local
+
+[esxis]
+esxi01.home
+esxi02.home
+
+[vcenters]
+vcenter.home
+
+[chicas]
+mariana.izt750.ddns.net
+claudia.izt750.ddns.net
+

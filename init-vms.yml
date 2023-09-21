@@ -1,8 +1,0 @@
----
-- name: playbook para creacion de VMS MoodleApp y MoodleDB en vCenter
-  host: vcenter
-  remote_user: ansible
-  beacome: true
-  roles:
-    - ticss.system.creavms
-    

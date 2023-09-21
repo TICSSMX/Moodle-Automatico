@@ -1,0 +1,31 @@
+---
+vcenter_hostname: "vcenter.home"
+vcenter_datacenter: "izt750"
+vcenter_cluster: "Cluster01"
+vcenter_validate_certs: false
+vcenter_username: "ansible@vsphere.home"
+vcenter_password: "VMware1!"
+vcenter_destination_folder: "/lab/moodle"
+vm_name: "MoodleApp"
+vm_guestid: "oracleLinux9_64Guest"
+vm_disk_gb: 10
+vm_disk_type: "thin"
+vm_disk_datastore: "HDD-free"
+vm_hw_ram_mb: 1024
+vm_hw_cpu_n: 1
+vm_hw_scsi: "paravirtual"
+vm_net_name: "DC"
+vm_net_type: "vmxnet3"
+vm_net_mask: "255.255.255.0"
+vm_state: "poweredon"
+vm_template: "OLR9"
+vm_moo_app_name: "MoodleApp"
+vm_moo_app_net_ip: "17.1.0.111"
+#hw_product_uuid -- se optiene ejecutando el playbook de vmw_info_vms_moodle.yml
+vm_moo_app_uuid: "4237651a-e933-4355-af1a-d33cdc4b5f88"
+vm_moo_db_name: "MoodleDB"
+vm_moo_db_net_ip: "17.1.0.112"
+vm_moo_db_uuid: "42373c3c-559a-30de-567e-63c2d33400e5"
+esxi_01_hostname: "esxi01.home"
+esxi_02_hostname: "esxi02.home"
+
